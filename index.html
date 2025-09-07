@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTERATION FOR 7C UNIVERSITY</title>
+    <link rel="icon" href="https://i.postimg.cc/9M9zV0MF/9fdd5598-a08a-427c-af5a-34dfe9e512d3.png" type="image/png">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="submit">Register</div>
+            <div class="tab" data-tab="search">Search by Roll No</div>
+            <div class="tab" data-tab="idcard">Generate ID Card</div>
+        </div>
+        
+        <div class="form-container">
+            <!-- Submit Tab -->
+            <div id="submitTab" class="tab-content">
+                <h1>Registeration for 7c-University</h1>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Enter your WhatsApp number">
+                    </div>
+                    
+                    <button type="submit">Register & Generate Rollno.</button>
+                </form>
+                
+                <div class="rollno-container" id="rollnoContainer">
+                    <div class="rollno-label">Your Generated Roll Number:</div>
+                    <div class="rollno-value" id="rollnoValue">123456</div>
+                </div>
+                
+                <div id="successMessage" class="success-message">
+                    Thank you! Your information has been submitted successfully.
+                </div>
+                
+                <div id="errorMessage" class="error-message">
+                    There was an error submitting your information. Please try again.
+                </div>
+                
+                <div class="instructions">
+                    <p>Fill out the form above to generate your unique 6-digit roll number.</p>
+                    <p>Your information will be saved to our database.</p>
+                </div>
+            </div>
+            
+            <!-- Search Tab -->
+            <div id="searchTab" class="tab-content" style="display: none;">
+                <h1>Search</h1>
+                <div class="form-group">
+                    <label for="searchRollNo">Enter Roll Number</label>
+                    <input type="text" id="searchRollNo" name="searchRollNo" placeholder="Enter 6-digit roll number">
+                </div>
+                
+                <button type="button" id="searchButton">Search</button>
+                
+                <div id="searchResults" class="search-results">
+                    <div class="no-results" id="noResults">No results found. Please enter a valid roll number.</div>
+                    <div id="resultsContent" style="display: none;">
+                        <div class="result-item">
+                            <span class="result-label">Name:</span>
+                            <span id="resultName"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Email:</span>
+                            <span id="resultEmail"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">WhatsApp:</span>
+                            <span id="resultWhatsApp"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Roll No:</span>
+                            <span id="resultRollNo"></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Status:</span>
+                            <span id="resultStatus"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ID Card Tab -->
+            <div id="idcardTab" class="tab-content" style="display: none;">
+                <h1>Generate Student ID Card</h1>
+                <div class="form-group">
+                    <label for="idCardRollNo">Enter Roll Number</label>
+                    <input type="text" id="idCardRollNo" name="idCardRollNo" placeholder="Enter your 6-digit roll number">
+                </div>
+                
+                <div class="form-group photo-upload">
+                    <label for="photoInput">Upload Your Photo</label>
+                    <input type="file" id="photoInput" accept="image/*">
+                </div>
+                
+                <div class="color-customization">
+                    <label>Card Background Style</label>
+                    <div class="color-options">
+                        <div class="color-option active" style="background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);" data-type="gradient" data-value="1a2a6c,b21f1f,fdbb2d"></div>
+                        <div class="color-option" style="background: #3498db;" data-type="solid" data-value="#3498db"></div>
+                        <div class="color-option" style="background: #2ecc71;" data-type="solid" data-value="#2ecc71"></div>
+                        <div class="color-option" style="background: #9b59b6;" data-type="solid" data-value="#9b59b6"></div>
+                        <div class="color-option" style="background: #e74c3c;" data-type="solid" data-value="#e74c3c"></div>
+                        <div class="color-option" style="background: #f39c12;" data-type="solid" data-value="#f39c12"></div>
+                    </div>
+                    
+                    <div class="color-picker-container">
+                        <label class="color-picker-label">Or choose a custom color:</label>
+                        <input type="color" id="customColorPicker" class="color-picker" value="#3498db">
+                    </div>
+                </div>
+                
+                <button type="button" id="generateIdCard">Generate ID Card</button>
+                
+                <div class="id-card-container">
+                    <div class="id-card" id="idCard">
+                        <div class="id-card-header">
+                            <h2>7c UNIVERSITY</h2>
+                            <p>UNIVERSITY OF COMPUTER EDUCATION</p>
+                        </div>
+                        <div class="id-card-body">
+                            <div class="id-card-info">
+                                <p><strong>Name:</strong> <span id="idName">-</span></p>
+                                <p><strong>Studies For:</strong> <span id="idStudies">Computer Education</span></p>
+                                <p><strong>Roll No:</strong> <span id="idRollNo">-</span></p>
+                                <p><strong>Status:</strong> <span id="idStatus">-</span></p>
+                            </div>
+                            <div class="id-card-photo">
+                                <div class="placeholder">Upload Photo</div>
+                            </div>
+                        </div>
+                        <div class="id-card-footer">
+                            <div class="id-card-id">ID: <span id="idNumber">0123456789</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="id-card-actions">
+                    <button type="button" id="downloadIdCard">Download ID Card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      <script src="script.js"></script>
+  </body>
+</html>
